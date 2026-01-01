@@ -32,7 +32,7 @@ const Header: React.FC = () => {
   });
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 20) {
+    if (latest > 10) {
       setScrolled(true);
     } else {
       setScrolled(false);
@@ -43,14 +43,14 @@ const Header: React.FC = () => {
     <motion.div
       style={{ width, y, borderRadius }}
       className={cn(
-        "bg-background/50 sticky top-0 mx-auto flex h-16 w-full items-center justify-between rounded-full px-4",
+        "bg-background/50 sticky top-0 z-50 mx-auto flex h-16 w-full items-center justify-between rounded-full px-4",
         scrolled && "shadow backdrop-blur-lg backdrop-saturate-150",
       )}
     >
       <div className="text-lg font-bold">SameerX.dev</div>
 
       <div className="flex items-center justify-center gap-3">
-        <div className="flex items-center">
+        <div className="hidden items-center md:flex">
           {OPTIONS.map(({ label, href }, idx: number) => (
             <Link
               key={idx}

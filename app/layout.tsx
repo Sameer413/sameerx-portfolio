@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import MaxWidthWrapper from "@/components/layout/max-width-wrapper";
 import Pattern from "@/components/layout/pattern";
@@ -8,6 +8,11 @@ import ThemeProvider from "@/components/providers/theme-provider";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -23,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistMono.variable} h-full antialiased`}>
+      <body
+        className={`${geistMono.variable} ${inter.variable} h-full antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
