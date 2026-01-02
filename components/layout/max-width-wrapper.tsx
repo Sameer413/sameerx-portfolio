@@ -8,11 +8,11 @@ const MaxWidthWrapper: React.FC<{
 }> = ({ children, className }) => {
   return (
     <div
-      className={cn("relative h-full w-full mx-auto flex max-w-7xl", className)}
+      className={cn("relative mx-auto flex h-full w-full max-w-4xl", className)}
     >
-      <Pattern className="w-10" />
+      <Pattern className="hidden w-10 md:block lg:block" />
       <main className="w-full flex-1">{children}</main>
-      <Pattern className="w-10" />
+      <Pattern className="hidden w-10 md:block lg:block" />
     </div>
   );
 };

@@ -3,11 +3,12 @@ import React from "react";
 
 const Pattern: React.FC<{ className?: string }> = ({ className }) => {
   return (
+    // hidden in classname before md:block
     <div
       className={cn(
         `
         inset-0
-        hidden md:block
+         md:block
         border-x border-x-(--pattern-fg)
         bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)]
         bg-[size:10px_10px]

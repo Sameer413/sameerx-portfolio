@@ -84,6 +84,9 @@
   --text-neutral: oklch(0.145 0.01 260);
   --text-neutral-muted: oklch(0.45 0.02 260);
   --text-neutral-subtle: oklch(0.65 0.02 260);
+
+  /* Shadow */
+  --shadow-aesthetic: 0 3px 10px rgb(0,0,0,0.2)
 }
 
 .dark {
