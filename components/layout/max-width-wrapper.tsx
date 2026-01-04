@@ -7,10 +7,15 @@ const MaxWidthWrapper: React.FC<{
   className?: string;
 }> = ({ children, className }) => {
   return (
-    <div className={cn("relative mx-auto grid grid-cols-[max-content_1fr_max-content] max-w-4xl", className)}>
-      <Pattern className="hidden w-10 md:block lg:block" />
+    <div
+      className={cn(
+        "relative mx-auto grid max-w-4xl grid-cols-[max-content_1fr_max-content]",
+        className,
+      )}
+    >
+      <Pattern className="w-4 md:block md:w-10 lg:block" />
       <main className="h-full w-full flex-1">{children}</main>
-      <Pattern className="hidden w-10 md:block lg:block" />
+      <Pattern className="w-4 md:block md:w-10 lg:block" />
     </div>
   );
 };

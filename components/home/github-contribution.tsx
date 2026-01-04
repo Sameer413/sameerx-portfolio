@@ -16,13 +16,15 @@ const GithubContribution: React.FC = () => {
 
   return (
     <div className="border-y p-4">
-      <GitHubCalendar
-        username="sameer413"
-        blockSize={12}
-        blockMargin={4}
-        fontSize={14}
-        colorScheme={theme === "dark" ? "dark" : "light"}
-      />
+      <div className="w-full overflow-x-auto">
+        <GitHubCalendar
+          username="sameer413"
+          blockSize={12}
+          blockMargin={4}
+          fontSize={14}
+          colorScheme={theme === "dark" ? "dark" : "light"}
+        />
+      </div>
     </div>
   );
 };

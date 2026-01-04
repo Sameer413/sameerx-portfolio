@@ -1,6 +1,7 @@
 import About from "@/components/home/about";
 import GithubContribution from "@/components/home/github-contribution";
 import Greeting from "@/components/home/greeting";
+import TechStack from "@/components/home/tech-stack";
 import Pattern from "@/components/layout/pattern";
 import Overview from "@/components/overview";
 import Socials from "@/components/socials";
@@ -20,8 +21,12 @@ export default function Home() {
       <About />
       <Pattern className="h-10" />
 
-      <GithubContribution />
+      {/* <GithubContribution />
+      <Pattern className="h-10" /> */}
+
+      <TechStack />
       <Pattern className="h-10" />
+
     </div>
   );
 }
