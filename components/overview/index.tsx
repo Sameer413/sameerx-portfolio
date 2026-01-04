@@ -1,10 +1,11 @@
 "use client";
 
-import { CodeXml, Globe, Mail, MapPin, Mars } from "lucide-react";
 import React from "react";
+import { CodeXml, Globe, Mail, MapPin, Mars } from "lucide-react";
 import OverviewTag from "./overview-tag";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { USER } from "@/data";
 
 const containerVariants = {
   hidden: {},
@@ -15,18 +16,18 @@ const containerVariants = {
   },
 };
 
-const Overview = () => {
+const Overview: React.FC = () => {
   return (
     <motion.div
       initial="hidden"
       animate="show"
       variants={containerVariants}
-      className="flex flex-col gap-4 p-4 border-y"
+      className="flex flex-col gap-4 border-y p-4"
     >
       <OverviewTag label="Full Stack Developer @AlterSquare" icon={CodeXml} />
 
       <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2">
-        <OverviewTag label="Nagpur, Maharashtra" icon={MapPin} />
+        <OverviewTag label={USER.city} icon={MapPin} />
         <OverviewTag icon={Mail}>
           <Link
             href="mailto:sameernimje29@outlook.com"
