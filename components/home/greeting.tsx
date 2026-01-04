@@ -35,7 +35,7 @@ const Greeting: React.FC = () => {
           height={500}
           className="ring-border h-full w-full rounded-full object-cover ring-1 ring-offset-2 select-none"
         />
-        <IndianFlag className="absolute bottom-0 left-0 h-auto w-10" />
+        {/* <IndianFlag className="absolute bottom-0 left-0 h-auto w-10" /> */}
       </div>
       <div className="grid flex-1 grid-rows-[1fr_max-content_max-content]">
         <div className="relative">

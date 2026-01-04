@@ -1,11 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { GitHubCalendar } from "react-github-calendar";
 
 const GithubContribution: React.FC = () => {
-  const theme = useTheme();
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // ✅ critical
 
   return (
     <div className="border-y p-4">
@@ -14,7 +21,7 @@ const GithubContribution: React.FC = () => {
         blockSize={12}
         blockMargin={4}
         fontSize={14}
-        colorScheme={theme.theme === "dark" ? "dark" : "light"}
+        colorScheme={theme === "dark" ? "dark" : "light"}
       />
     </div>
   );

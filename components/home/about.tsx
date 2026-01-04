@@ -18,14 +18,21 @@ const About = () => {
           },
         }}
         initial="hidden"
-        animate="show"
+        // animate="show"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
         className="font-geist-mono marker:text-ring list-disc space-y-2 pl-5 text-justify text-sm marker:text-lg"
       >
         {USER.about.map((ab: string, idx: number) => (
           <motion.li
             variants={{
               hidden: { opacity: 0, y: 5 },
-              show: { opacity: 1, y: 0 },
+              // show: { opacity: 1, y: 0 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.35, ease: "easeOut" },
+              },
             }}
             key={idx}
           >
