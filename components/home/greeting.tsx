@@ -33,7 +33,7 @@ const Greeting: React.FC = () => {
           }
           width={500}
           height={500}
-          className="ring-border h-full w-full rounded-full object-cover ring-1 ring-offset-2 select-none"
+          className="ring-ring h-full w-full rounded-full object-cover ring-1 ring-offset-1 ring-offset-ring select-none"
         />
         {/* <IndianFlag className="absolute bottom-0 left-0 h-auto w-10" /> */}
       </div>
@@ -43,11 +43,9 @@ const Greeting: React.FC = () => {
           <div className="font-geist-mono text-muted-foreground absolute bottom-0 mb-1 ml-2 text-[10px] md:hidden md:text-xs">
             text-3xl font-geist-mono font-medium
           </div>
-          <pre className="font-geist-mono text-muted-foreground pointer-events-none absolute bottom-0 mb-2 ml-3 hidden text-sm leading-tight font-medium select-none md:block">
-            {`<body className="text-3xl font-geist-mono font-medium">
-  <h1>Building for the web</h1>
-</body>`}
-          </pre>
+          <div className="font-geist-mono text-muted-foreground pointer-events-none absolute bottom-0 mb-2 ml-3 hidden text-sm leading-tight font-medium select-none md:block">
+            {"<h1>Building for the web!</h1>"}
+          </div>
         </div>
 
         <div className="flex flex-col-reverse gap-1 border-t py-2 pl-3 md:flex-row md:items-center md:gap-4">

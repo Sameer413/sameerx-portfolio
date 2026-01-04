@@ -3,7 +3,7 @@ export const ROLES = [
   "Frontend Engineer",
   "Backend Engineer",
   "Full-Stack Engineer",
-  "DevOps Engineer",
+  // "DevOps Engineer",
 ];
 
 export const USER = {
@@ -20,3 +20,88 @@ export const USER = {
     "Currently exploring Go for backend systems and Three.js for interactive, 3D web experiences.",
   ],
 };
+
+export const TECH_STACK = [
+  // ── Languages
+  {
+    icon: "/images/typescript.svg",
+    label: "TypeScript",
+  },
+  {
+    icon: "/images/js.svg",
+    label: "JavaScript",
+  },
+  {
+    icon: "/images/python.svg",
+    label: "Python",
+  },
+  {
+    icon: "/images/java.svg",
+    label: "Java",
+  },
+  {
+    icon: "/images/Go-Logo_Blue.svg",
+    label: "Go",
+  },
+
+  // ── Frontend
+  {
+    icon: "/images/react.svg",
+    label: "React",
+  },
+  {
+    icon: "/images/nextjs2-light.svg",
+    label: "Next.js",
+  },
+  {
+    icon: "/images/react-navigation.svg",
+    label: "React Navigation",
+  },
+  {
+    icon: "/images/tailwindcss.svg",
+    label: "Tailwind CSS",
+  },
+
+  // ── State Management
+  {
+    icon: "/images/redux.svg",
+    label: "Redux",
+  },
+
+  // ── Backend
+  {
+    icon: "/images/nodejs.svg",
+    label: "Node.js",
+  },
+  {
+    icon: "/images/spring.svg",
+    label: "Spring",
+  },
+
+  // ── Databases
+  {
+    icon: "/images/postgresql.svg",
+    label: "PostgreSQL",
+  },
+  {
+    icon: "/images/mongodb.svg",
+    label: "MongoDB",
+  },
+  {
+    icon: "/images/redis.svg",
+    label: "Redis",
+  },
+
+  // ── Tools
+  {
+    icon: "/images/git.svg",
+    label: "Git",
+  },
+
+  // ── Design
+  {
+    icon: "/images/ps.svg",
+    label: "Adobe Photoshop",
+  },
+];
+
