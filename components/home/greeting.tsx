@@ -33,7 +33,7 @@ const Greeting: React.FC = () => {
           }
           width={500}
           height={500}
-          className="ring-ring h-full w-full rounded-full object-cover ring-1 ring-offset-1 ring-offset-ring select-none"
+          className="ring-ring ring-offset-ring h-full w-full rounded-full object-cover ring-1 ring-offset-1 select-none"
         />
         {/* <IndianFlag className="absolute bottom-0 left-0 h-auto w-10" /> */}
       </div>
@@ -49,16 +49,20 @@ const Greeting: React.FC = () => {
         </div>
 
         <div className="flex flex-col-reverse gap-1 border-t py-2 pl-3 md:flex-row md:items-center md:gap-4">
-          <div className="text-2xl font-bold md:text-3xl">Sameer Nimje</div>
-          <div className="inline-block w-fit rounded-sm border px-2 shadow-[var(--shadow-aesthetic)]">
+          <div className="text-2xl font-bold md:text-3xl select-none">Sameer Nimje</div>
+          <div className="inline-block w-fit rounded-sm border cursor-default select-none px-2 shadow-[var(--shadow-aesthetic)]">
             <RollingText
               className="text-muted-foreground font-geist-mono inline-block text-xs font-medium text-balance md:text-sm"
               variants={{
-                initial: { y: -10, opacity: 0 },
+                initial: { y: -10, opacity: 0, filter: "blur(8px)" },
                 animate: {
                   y: 0,
                   opacity: 1,
-                  x: [0, -6, 6, -4, 4, 0],
+                  x: [0, -4, 4, -2, 2, 0],
+                  filter: "blur(2px)", // keep slight blur during shake
+                  transitionEnd: {
+                    filter: "blur(0px)", // 👈 applied LAST
+                  },
                 },
                 exit: {
                   y: 10,
