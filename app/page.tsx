@@ -1,4 +1,5 @@
 import About from "@/components/home/about";
+import Experience from "@/components/home/experience";
 import GithubContribution from "@/components/home/github-contribution";
 import Greeting from "@/components/home/greeting";
 import TechStack from "@/components/home/tech-stack";
@@ -25,6 +26,9 @@ export default function Home() {
       <Pattern className="h-10" /> */}
 
       <TechStack />
+      <Pattern className="h-10" />
+      
+      <Experience />
       <Pattern className="h-10" />
 
     </div>

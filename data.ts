@@ -104,4 +104,3 @@ export const TECH_STACK = [
     label: "Adobe Photoshop",
   },
 ];
-
