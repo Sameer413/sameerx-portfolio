@@ -13,13 +13,15 @@ export default function Home() {
       {/* <div className="text-xl font-bold">SameerX</div> */}
       <Greeting />
       <Pattern className="h-10" />
+      
       <Overview />
-
       <Pattern className="h-10" />
-      <Socials />
-      <Pattern className="h-10" />
-
+      
       <About />
+      <Pattern className="h-10" />
+
+
+      <Socials />
       <Pattern className="h-10" />
 
       {/* <GithubContribution />
@@ -27,10 +29,9 @@ export default function Home() {
 
       <TechStack />
       <Pattern className="h-10" />
-      
+
       <Experience />
       <Pattern className="h-10" />
-
     </div>
   );
 }
