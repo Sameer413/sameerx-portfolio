@@ -39,7 +39,9 @@ const ExperiencePositionItem = ({
             />
           </div>
 
-          <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
+          <h4 className="font-geist-mono flex-1 font-medium text-balance">
+            {position.title}
+          </h4>
 
           <div className="text-muted-foreground" aria-hidden>
             <div
@@ -118,7 +120,7 @@ const ExperiencePositionItem = ({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="border-border my-2 overflow-hidden border-t"
             >
-              <ul className="font-geist-mono text-muted-foreground marker:text-ring list-disc space-y-1.5 pl-5 text-sm leading-relaxed marker:text-lg sm:text-[0.925rem] sm:leading-relaxed md:text-sm md:leading-6 lg:text-[0.95rem]">
+              <ul className="font-geist-mono marker:text-ring list-disc space-y-1.5 pl-5 text-sm leading-relaxed marker:text-lg md:leading-6">
                 {position.description?.map((item: string, idx: number) => (
                   <li key={"desc_" + idx} className="text-pretty">
                     {item}
