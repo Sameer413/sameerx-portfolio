@@ -24,11 +24,14 @@ const Overview: React.FC = () => {
       variants={containerVariants}
       className="flex flex-col gap-4 border-y p-4"
     >
-      <OverviewTag label="Full Stack Developer @AlterSquare" icon={CodeXml} />
+      <OverviewTag
+        label="Full Stack Developer @AlterSquare"
+        icon={<CodeXml size={4} />}
+      />
 
       <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2">
-        <OverviewTag label={USER.city} icon={MapPin} />
-        <OverviewTag icon={Mail}>
+        <OverviewTag label={USER.city} icon={<MapPin size={4} />} />
+        <OverviewTag icon={<Mail size={4} />}>
           <Link
             href="mailto:sameernimje29@outlook.com"
             className="hover:underline"
@@ -36,7 +39,7 @@ const Overview: React.FC = () => {
             sameernimje29@outlook.com
           </Link>
         </OverviewTag>
-        <OverviewTag icon={Globe}>
+        <OverviewTag icon={<Globe size={4} />}>
           <Link
             href={"https://sameerx.in"}
             className="hover:underline"
@@ -45,7 +48,7 @@ const Overview: React.FC = () => {
             sameerx.in
           </Link>
         </OverviewTag>
-        <OverviewTag label="he/him" icon={Mars} />
+        <OverviewTag label="he/him" icon={<Mars size={4} />} />
       </div>
     </motion.div>
   );

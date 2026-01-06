@@ -1,58 +1,65 @@
+"use client";
+
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { ExperiencePosition } from "@/types/experience";
 import { InfinityIcon, Tag } from "lucide-react";
-import React from "react";
 import { ExperienceIcon } from "./experience-position-icon";
 import { Separator } from "../ui/separator";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import SkillTag from "../common/skill-tag";
+import OverviewTag from "../overview/overview-tag";
+import { AnimatePresence, motion } from "motion/react";
 
 const ExperiencePositionItem = ({
   position,
 }: {
   position: ExperiencePosition;
-}) => {
+}): React.ReactNode => {
+  const [open, setOpen] = useState<boolean>(position.isExpanded || false);
   const { start, end } = position.employmentPeriod;
   const isOngoing = !end;
 
   return (
-    <details
-      open={position.isExpanded}
-      className="group last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4"
-    >
+    <div className="group last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4">
       {/* Trigger */}
-      <summary
+      <div
         className={cn(
           "block w-full cursor-pointer list-none text-left",
           "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7",
           "before:-z-1 before:rounded-lg before:transition-[background-color] before:ease-out",
           "hover:before:bg-accent2",
         )}
+        onClick={() => setOpen(!open)}
       >
-        <div className="relative z-1 mb-1 flex items-center gap-3">
-          <div
-            className={cn(
-              "flex size-6 shrink-0 items-center justify-center rounded-lg",
-              "bg-muted text-muted-foreground",
-              "border-muted-foreground/15 ring-edge ring-offset-background border ring-1 ring-offset-1",
-            )}
-            aria-hidden
-          >
-            <ExperienceIcon className="size-4" icon={position.icon} />
+        <div className="relative z-1 mb-1 flex items-center">
+          <div>
+            <OverviewTag
+              icon={<ExperienceIcon className="size-4" icon={position.icon} />}
+            />
           </div>
 
           <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
 
-          <div
-            className="text-muted-foreground relative shrink-0 transition-transform [&_svg]:size-4"
-            aria-hidden
-          >
-            {/* <span className="rotate-0 group-open:rotate-180">
-              <IoIosArrowDown className="size-4" />
-            </span>
-
-            <span className="rotate-0 group-open:rotate-180">
+          <div className="text-muted-foreground" aria-hidden>
+            <div
+              className={cn(
+                "text-muted-foreground transition-transform duration-200",
+                open ? "rotate-180" : "rotate-0",
+              )}
+              aria-hidden
+            >
               <IoIosArrowUp className="size-4" />
-            </span> */}
+            </div>
+            <div
+              className={cn(
+                "text-muted-foreground transition-transform duration-200",
+                open ? "rotate-180" : "rotate-0",
+              )}
+              aria-hidden
+            >
+              <IoIosArrowDown className="size-4" />
+            </div>
           </div>
         </div>
 
@@ -90,7 +97,7 @@ const ExperiencePositionItem = ({
             </dd>
           </dl>
         </div>
-      </summary>
+      </div>
 
       {/* Content */}
       <div
@@ -101,23 +108,40 @@ const ExperiencePositionItem = ({
           "group-not-open:animate-collapsible-fade-up",
         )}
       >
-        {/* {position.description && (
-          <ProseMono className="pt-2">
-            <Markdown>{position.description}</Markdown>
-          </ProseMono>
-        )} */}
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="content"
+              initial={{ height: 0, opacity: 0, borderTopWidth: 0 }}
+              animate={{ height: "auto", opacity: 1, borderTopWidth: 1 }}
+              exit={{ height: 0, opacity: 0, borderTopWidth: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="border-border my-2 overflow-hidden border-t"
+            >
+              <ul className="font-geist-mono text-muted-foreground marker:text-ring list-disc space-y-1.5 pl-5 text-sm leading-relaxed marker:text-lg sm:text-[0.925rem] sm:leading-relaxed md:text-sm md:leading-6 lg:text-[0.95rem]">
+                {position.description?.map((item: string, idx: number) => (
+                  <li key={"desc_" + idx} className="text-pretty">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        {/* {Array.isArray(position.skills) && position.skills.length > 0 && (
-          <ul className="flex flex-wrap gap-1.5 pt-3">
-            {position.skills.map((skill, index) => (
-              <li key={index}>
-                <Tag>{skill}</Tag>
-              </li>
+        {Array.isArray(position.skills) && position.skills.length > 0 && (
+          <ul className="flex flex-wrap gap-1 pt-3">
+            {position.skills.map((skill, idx) => (
+              <SkillTag
+                key={idx}
+                image_src={skill.image_src}
+                label={skill.label}
+              />
             ))}
           </ul>
-        )} */}
+        )}
       </div>
-    </details>
+    </div>
   );
 };
 

@@ -86,7 +86,7 @@
   --text-neutral-subtle: oklch(0.65 0.02 260);
 
   /* Shadow */
-  --shadow-aesthetic: 0 3px 10px rgb(0,0,0,0.2)
+  --shadow-aesthetic: 0 3px 10px rgb(0, 0, 0, 0.2);
 }
 
 .dark {
@@ -134,6 +134,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes animate-ping {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@theme {
+  --animate-ping: animate-ping 2s ease-in-out infinite;
 }
 
 @theme {

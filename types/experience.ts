@@ -1,3 +1,6 @@
+import { LucideIcon } from "lucide-react";
+import { IconType } from "react-icons";
+
 export type ExperiencePositionIcon =
   /** Icon key used to render the position category in the UI. */
   "code" | "design" | "education" | "business" | "idea";
@@ -17,10 +20,14 @@ export type ExperiencePosition = {
   };
   /** Full-time | Part-time | Contract | Internship, etc. */
   employmentType?: string;
-  description?: string;
+  description?: string[];
   /** UI icon to represent the role type. */
   icon?: ExperiencePositionIcon;
-  skills?: string[];
+  skills?: {
+    image_src?: string;
+    label: string;
+    Icon?: LucideIcon | IconType;
+  }[];
   /** Whether the position is expanded by default in the UI. */
   isExpanded?: boolean;
 };
