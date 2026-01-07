@@ -5,6 +5,7 @@ import Greeting from "@/components/home/greeting";
 import TechStack from "@/components/home/tech-stack";
 import Pattern from "@/components/layout/pattern";
 import Overview from "@/components/overview";
+import NewAbout from "@/components/overview/new-overview";
 import Socials from "@/components/socials";
 
 export default function Home() {
@@ -13,14 +14,14 @@ export default function Home() {
       {/* <div className="text-xl font-bold">SameerX</div> */}
       <Greeting />
       <Pattern className="h-10" />
-      
+
+      {/* <About /> */}
+      <NewAbout />
+      <Pattern className="h-10" />
+
       <Overview />
       <Pattern className="h-10" />
       
-      <About />
-      <Pattern className="h-10" />
-
-
       <Socials />
       <Pattern className="h-10" />
 
