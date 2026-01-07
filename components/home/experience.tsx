@@ -40,7 +40,7 @@ const Experience: React.FC = () => {
                 {experience.isCurrentEmployer && (
                   <div className="font-geist-mono text-foreground flex items-center gap-1 rounded-md bg-[color-mix(in_oklab,var(--color-green-400)_10%,transparent)] px-1.5 py-1 text-xs font-medium">
                     <div
-                      className="animate-ping rounded-lg bg-green-500 p-1"
+                      className="animate-ping rounded-lg bg-green-500 p-1 select-none"
                       style={{ backgroundColor: "var(--color-green-500)" }}
                     />
                     <span className="sr-only">Current Employer</span>

@@ -17,12 +17,13 @@ export default function Home() {
 
       {/* <About /> */}
       <NewAbout />
+      {/* <Socials /> */}
+
       <Pattern className="h-10" />
 
       <Overview />
       <Pattern className="h-10" />
-      
-      <Socials />
+
       <Pattern className="h-10" />
 
       {/* <GithubContribution />
