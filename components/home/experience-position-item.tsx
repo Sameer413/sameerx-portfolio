@@ -10,6 +10,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import SkillTag from "../common/skill-tag";
 import OverviewTag from "../overview/overview-tag";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 
 const ExperiencePositionItem = ({
   position,
@@ -47,7 +48,7 @@ const ExperiencePositionItem = ({
             <div
               className={cn(
                 "text-muted-foreground transition-transform duration-200",
-                open ? "rotate-180" : "rotate-0",
+                open ? "scale-y-[-1]" : "scale-y-100",
               )}
               aria-hidden
             >
@@ -56,7 +57,7 @@ const ExperiencePositionItem = ({
             <div
               className={cn(
                 "text-muted-foreground transition-transform duration-200",
-                open ? "rotate-180" : "rotate-0",
+                open ? "scale-y-[-1]" : "scale-y-100",
               )}
               aria-hidden
             >
@@ -134,11 +135,22 @@ const ExperiencePositionItem = ({
         {Array.isArray(position.skills) && position.skills.length > 0 && (
           <ul className="flex flex-wrap gap-1 pt-3">
             {position.skills.map((skill, idx) => (
-              <SkillTag
+              <div
                 key={idx}
-                image_src={skill.image_src}
-                label={skill.label}
-              />
+                className="text-foreground bg-muted border-border flex items-center gap-1 rounded-md border-2 border-dashed px-1.5 py-1 text-xs font-normal select-none"
+              >
+                {skill.image_src && (
+                  <Image
+                    alt={skill.label + "_logo"}
+                    src={skill.image_src}
+                    width={16}
+                    height={16}
+                  />
+                )}
+                {skill.Icon && <skill.Icon />}
+
+                {skill.label}
+              </div>
             ))}
           </ul>
         )}

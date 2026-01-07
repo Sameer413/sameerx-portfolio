@@ -15,15 +15,10 @@ export default function Home() {
       <Greeting />
       <Pattern className="h-10" />
 
-      {/* <About /> */}
-      <NewAbout />
-      {/* <Socials /> */}
-
+      <About />
       <Pattern className="h-10" />
 
       <Overview />
-      <Pattern className="h-10" />
-
       <Pattern className="h-10" />
 
       {/* <GithubContribution />
