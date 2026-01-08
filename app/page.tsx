@@ -1,13 +1,11 @@
 import About from "@/components/home/about";
 import Experience from "@/components/home/experience";
-import GithubContribution from "@/components/home/github-contribution";
+// import GithubContribution from "@/components/home/github-contribution";
 import Greeting from "@/components/home/greeting";
 import TechStack from "@/components/home/tech-stack";
 import Pattern from "@/components/layout/pattern";
 import Overview from "@/components/overview";
-import NewAbout from "@/components/overview/new-overview";
 import Projects from "@/components/project";
-import Socials from "@/components/socials";
 
 export default function Home() {
   return (

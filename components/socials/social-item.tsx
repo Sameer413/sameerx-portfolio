@@ -52,7 +52,7 @@ const SocialItem: React.FC<Props> = ({
       {/* Expanding label */}
       <motion.div
         variants={containerVariants}
-        className="bg-background left-full ml-2 overflow-hidden whitespace-nowrap hover:underline"
+        className="left-full ml-2 overflow-hidden whitespace-nowrap hover:underline"
       >
         {label?.split(" ").map((word, wordIndex) => (
           <motion.span

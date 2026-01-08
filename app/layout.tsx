@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistMono.variable} ${inter.variable} antialiased box-border`}
+        className={`${geistMono.variable} ${inter.variable} antialiased box-border dark:bg-neutral-900`}
       >
         <ThemeProvider
           attribute="class"

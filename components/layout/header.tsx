@@ -4,8 +4,14 @@ import { ThemeSwitcher } from "../common/theme-switcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import {
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 const OPTIONS = [
   { label: "Home", href: "/" },
@@ -17,6 +23,7 @@ const OPTIONS = [
 const Header: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [headerIcon, setHeaderIcon] = useState<boolean>(false);
 
   const pathname = usePathname();
   const { scrollY } = useScroll();
@@ -32,22 +39,59 @@ const Header: React.FC = () => {
   });
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 10) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    // if (latest > 10) {
+    //   setScrolled(true);
+    // } else {
+    //   setScrolled(false);
+    // }
+    // if (latest > 170) {
+    //   setHeaderIcon(true);
+    // } else {
+    //   setHeaderIcon(false);
+    // }
+    setScrolled((prev) => (latest > 10 ? true : prev));
+    setHeaderIcon((prev) => {
+      if (latest > 170) return true;
+      if (latest < 100) return false;
+      return prev; // 🔹 keeps previous value between 100–170
+    });
   });
+
+  // const showIcon = useTransform(scrollY, (v) => v > 170);
 
   return (
     <motion.div
       style={{ width, y, borderRadius }}
       className={cn(
-        "bg-background/50 sticky top-0 z-50 mx-auto flex h-16 w-full items-center justify-between rounded-full px-4",
+        "sticky top-0 z-50 mx-auto flex h-16 w-full items-center justify-between rounded-full px-4",
         scrolled && "shadow backdrop-blur-lg backdrop-saturate-150",
       )}
     >
-      <div className="text-lg font-bold">SameerX.dev</div>
+      <div className="flex items-center gap-2">
+        <AnimatePresence mode="wait">
+          {headerIcon ? (
+            <div className="h-8 w-8">
+              <motion.img
+                initial={{ opacity: 0, x: -15, rotate: -45 }}
+                animate={{ opacity: 1, x: 0, rotate: 0 }}
+                exit={{ opacity: 0, x: -15, rotate: -25 }}
+                transition={{ ease: "easeOut", duration: 0.25 }}
+                src={
+                  "https://pbs.twimg.com/profile_images/2004574016246620160/wKaT51XI_400x400.jpg"
+                }
+                style={{ opacity: showIcon }}
+                width={50}
+                height={50}
+                className="h-full w-full rounded-full object-cover select-none"
+                // className="ring-ring ring-offset-ring h-full w-full rounded-full object-cover ring-1 ring-offset-1 select-none"
+              />
+            </div>
+          ) : null}
+        </AnimatePresence>
+        <div className="font-geist-mono text-lg font-semibold transition-all ease-linear">
+          SameerX
+        </div>
+      </div>
 
       <div className="flex items-center justify-center gap-3">
         <div className="hidden items-center md:flex">

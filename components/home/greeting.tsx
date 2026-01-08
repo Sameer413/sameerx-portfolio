@@ -24,7 +24,7 @@ const Greeting: React.FC = () => {
   };
 
   return (
-    <div className="mt-5 flex border-y">
+    <div className="flex">
       <div className="relative h-32 w-32 border-r p-1">
         <Image
           alt="my-image"
@@ -49,8 +49,10 @@ const Greeting: React.FC = () => {
         </div>
 
         <div className="flex flex-col-reverse gap-1 border-t py-2 pl-3 md:flex-row md:items-center md:gap-4">
-          <div className="text-2xl font-bold md:text-3xl select-none">Sameer Nimje</div>
-          <div className="inline-block w-fit rounded-sm border cursor-default select-none px-2 shadow-[var(--shadow-aesthetic)]">
+          <div className="text-2xl font-bold select-none md:text-3xl">
+            Sameer Nimje
+          </div>
+          <div className="inline-block w-fit cursor-default rounded-sm border px-2 shadow-[var(--shadow-aesthetic)] select-none">
             <RollingText
               className="text-muted-foreground font-geist-mono inline-block text-xs font-medium text-balance md:text-sm"
               variants={{
