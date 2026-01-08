@@ -6,6 +6,7 @@ import TechStack from "@/components/home/tech-stack";
 import Pattern from "@/components/layout/pattern";
 import Overview from "@/components/overview";
 import NewAbout from "@/components/overview/new-overview";
+import Projects from "@/components/project";
 import Socials from "@/components/socials";
 
 export default function Home() {
@@ -28,6 +29,9 @@ export default function Home() {
       <Pattern className="h-10" />
 
       <Experience />
+      <Pattern className="h-10" />
+
+      <Projects />
       <Pattern className="h-10" />
     </div>
   );

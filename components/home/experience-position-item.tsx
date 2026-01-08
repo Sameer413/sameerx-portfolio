@@ -22,7 +22,8 @@ const ExperiencePositionItem = ({
   const isOngoing = !end;
 
   return (
-    <div className="group last:before:bg-background relative last:before:absolute last:before:h-full last:before:w-4">
+    <div className="group relative last:before:absolute last:before:h-full last:before:w-4">
+    {/* <div className="group last:before:bg-neutral-900 relative last:before:absolute last:before:h-full last:before:w-4"> */}
       {/* Trigger */}
       <div
         className={cn(

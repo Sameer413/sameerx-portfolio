@@ -9,7 +9,7 @@ const MaxWidthWrapper: React.FC<{
   return (
     <div
       className={cn(
-        "relative mx-auto grid max-w-4xl grid-cols-[max-content_1fr_max-content]",
+        "relative mx-auto grid max-w-4xl grid-cols-[max-content_1fr_max-content] dark:bg-neutral-900",
         className,
       )}
     >

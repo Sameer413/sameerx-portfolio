@@ -8,7 +8,7 @@ const Experience: React.FC = () => {
   return (
     <div className="flex flex-col gap-4 border-y p-4">
       <div className="text-lg font-semibold md:text-xl">Experience</div>
-      <div className="">
+      <>
         {EXPERIENCES.map((experience: Experience) => {
           return (
             <div
@@ -60,7 +60,7 @@ const Experience: React.FC = () => {
             </div>
           );
         })}
-      </div>
+      </>
     </div>
   );
 };
