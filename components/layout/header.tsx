@@ -57,7 +57,7 @@ const Header: React.FC = () => {
     });
   });
 
-  // const showIcon = useTransform(scrollY, (v) => v > 170);
+  const showIcon = useTransform(scrollY, (v) => v > 170);
 
   return (
     <motion.div
