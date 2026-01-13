@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PROJECTS } from "@/data/projects";
 import ProjectCard from "./project-card";
 import { Button } from "../ui/button";
@@ -12,6 +12,22 @@ import { Project } from "@/types/project";
 const Projects: React.FC = () => {
   const [active, setActive] = useState<Project | null>();
 
+  useEffect(() => {
+    if (active) {
+      // Lock background scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore scroll
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup (important for route changes / unmount)
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
+  
   return (
     <div className="flex flex-col gap-4 border-y p-4">
       <div className="text-lg font-semibold md:text-xl">Projects</div>

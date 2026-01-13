@@ -9,7 +9,7 @@ const ProjectSkill: React.FC<Props> = ({ image, label }) => {
     <motion.div
       initial="collapsed"
       whileHover="expanded"
-      className="-mr-3 flex items-start justify-start rounded-full border border-neutral-200 bg-neutral-100 p-1 text-xs text-neutral-500 hover:z-10 dark:border-neutral-700 dark:bg-neutral-800"
+      className="-mr-3 flex cursor-pointer items-start justify-start rounded-full border border-neutral-200 bg-neutral-100 p-1 text-xs text-neutral-500 select-none hover:z-10 dark:border-neutral-700 dark:bg-neutral-800"
     >
       {image && (
         <Image

@@ -57,7 +57,7 @@ const Header: React.FC = () => {
     });
   });
 
-  const showIcon = useTransform(scrollY, (v) => v > 170);
+  // const showIcon = useTransform(scrollY, (v) => v > 170);
 
   return (
     <motion.div
@@ -79,7 +79,6 @@ const Header: React.FC = () => {
                 src={
                   "https://pbs.twimg.com/profile_images/2004574016246620160/wKaT51XI_400x400.jpg"
                 }
-                style={{ opacity: showIcon }}
                 width={50}
                 height={50}
                 className="h-full w-full rounded-full object-cover select-none"

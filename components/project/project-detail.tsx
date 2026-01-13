@@ -32,28 +32,30 @@ const ProjectDetail: React.FC<Props> = ({ onClick, image_src, project }) => {
           damping: 35,
           mass: 0.8,
         }}
-        className="border-border h-100 w-80 rounded-md border bg-white p-4 shadow-sm ring-1 shadow-black/10 ring-black/5"
+        className="h-full w-full max-w-3xl px-10"
       >
-        <Image
-          src={"/images/macbook-scroll.webp"}
-          alt=""
-          width={500}
-          height={500}
-          className="full rounded-sm object-cover"
-        />
+        <div className="no-scrollbar h-full overflow-hidden overflow-y-scroll bg-white p-5 dark:bg-neutral-800">
+          <div className="h-auto max-h-[75%] min-h-[40%] overflow-hidden rounded-md">
+            <Image
+              src={"/images/macbook-scroll.webp"}
+              alt=""
+              width={500}
+              height={500}
+              className="h-auto w-full rounded-sm object-cover"
+            />
+          </div>
 
-        <div className="relative my-2 flex max-w-[95%] flex-col items-start transition-transform duration-300 ease-out will-change-transform group-hover:translate-x-2">
           <motion.div
             layoutId={`text-${PROJECTS.findIndex((p) => p === project)}-${project.title}`}
             initial={{ y: 6, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
-              delay: 0.05, // 🔹 appears earlier
-            //   delay: 0.06, // 🔹 appears earlier
+              // delay: 0.03, // 🔹 appears earlier
+              delay: 0.06, // 🔹 appears earlier
               duration: 0.3, // 🔹 faster than card
               ease: "linear",
             }}
-            className="font-geist-mono text-secondary text-base font-medium"
+            className="font-geist-mono mt-2 text-base font-medium"
           >
             Supply Chain
           </motion.div>
