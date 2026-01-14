@@ -2,6 +2,7 @@ import type { Project } from "@/types/project";
 
 export const PROJECTS: Project[] = [
   {
+    id: 'anything',
     title: "Supply Chain",
     description: "anything on the description",
     tech_stack: [
@@ -12,6 +13,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    id: 'anything1',
     title: "Supply Chain",
     description: "anything on the description",
     tech_stack: [
@@ -22,6 +24,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    id: 'anything2',
     title: "Supply Chain",
     description: "anything on the description",
     tech_stack: [
