@@ -1,64 +1,10 @@
-"use client";
+import ProjectsClient from "@/components/project/projects-client";
+import { getAllProjects } from "@/lib/projects";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { PROJECTS } from "@/data/projects";
-import ProjectCard from "@/components/project/project-card";
-import ProjectDetail from "@/components/project/project-detail";
-import { Project } from "@/types/project";
+const ProjectsPage = async () => {
+  const projects = getAllProjects().filter((project) => project.published !== false);
 
-const page: React.FC = () => {
-  const [active, setActive] = useState<Project | null>();
-
-  return (
-    <div className="w-full p-4">
-      <motion.div
-        initial={{ width: 0, opacity: 0 }}
-        animate={{ width: "auto", opacity: 1 }}
-        transition={{ delay: 0.3, ease: "easeOut", duration: 0.5 }}
-        className="bg-accent relative inline-block overflow-hidden px-2 py-0.5"
-      >
-        <div className="font-geist-mono text-base font-normal text-nowrap">
-          I love building things
-        </div>
-        <div className="absolute -top-0.75 -left-0.75 h-1.5 w-1.5 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700" />
-        <div className="absolute -top-0.75 -right-0.75 h-1.5 w-1.5 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700" />
-        <div className="absolute -right-0.75 -bottom-0.75 h-1.5 w-1.5 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700" />
-        <div className="absolute -bottom-0.75 -left-0.75 h-1.5 w-1.5 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700" />
-      </motion.div>
-
-      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((project, idx: number) => (
-          <motion.button
-            key={idx}
-            onClick={() => setActive(project)}
-            layoutId={`component-${idx}-${project.title}`}
-            initial={{ y: 10, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{
-              delay: idx * 0.1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-            viewport={{ once: true }}
-            style={{ opacity: active && active !== project ? 0.3 : 1 }}
-          >
-            <ProjectCard project={project} idx={idx} />
-          </motion.button>
-        ))}
-      </div>
-
-      <AnimatePresence mode="wait">
-        {active && (
-          <ProjectDetail
-            onClick={setActive}
-            image_src="/images/macbook-scroll.webp"
-            project={active}
-          />
-        )}
-      </AnimatePresence>
-    </div>
-  );
+  return <ProjectsClient projects={projects} />;
 };
 
-export default page;
+export default ProjectsPage;

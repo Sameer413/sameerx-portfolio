@@ -11,8 +11,10 @@ export default function BlogsPage() {
   const blogs = getAllBlogPosts();
 
   return (
-    <div className="py-8">
-      <h1 className="text-foreground mb-2 text-4xl font-bold">Blog</h1>
+    <div className="px-4 py-8">
+      <h1 className="text-foreground text-shadow-primary/10 mb-2 text-4xl font-bold text-shadow-lg">
+        Blog
+      </h1>
       <p className="text-muted-foreground mb-8">
         Thoughts, tutorials, and insights on web development and technology.
       </p>
@@ -24,8 +26,8 @@ export default function BlogsPage() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog, idx) => (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {blogs.slice(1).map((blog, idx) => (
             <BlogCard key={blog.id} blog={blog} idx={idx} />
           ))}
         </div>

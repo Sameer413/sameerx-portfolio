@@ -38,17 +38,19 @@ const ProjectCard: React.FC<{ project: Project; idx: number }> = ({
         </div>
 
         {/* SKILLS */}
-        <div className="">
-          <ul className="flex flex-wrap pt-3">
-            {tech_stack.map((skill, idx) => (
-              <ExperienceSkill
-                key={idx}
-                image={skill.image}
-                label={skill.label}
-              />
-            ))}
-          </ul>
-        </div>
+        {tech_stack && tech_stack.length > 0 && (
+          <div className="">
+            <ul className="flex flex-wrap pt-3">
+              {tech_stack.map((skill, idx) => (
+                <ExperienceSkill
+                  key={idx}
+                  image={skill.image}
+                  label={skill.label}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

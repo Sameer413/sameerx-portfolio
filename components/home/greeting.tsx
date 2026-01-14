@@ -24,7 +24,7 @@ const Greeting: React.FC = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex border-b">
       <div className="relative h-32 w-32 border-r p-1">
         <Image
           alt="my-image"
@@ -49,7 +49,7 @@ const Greeting: React.FC = () => {
         </div>
 
         <div className="flex flex-col-reverse gap-1 border-t py-2 pl-3 md:flex-row md:items-center md:gap-4">
-          <div className="text-2xl font-bold select-none md:text-3xl">
+          <div className="text-shadow-primary/10 text-primary/90 text-2xl font-bold select-none text-shadow-lg md:text-3xl">
             Sameer Nimje
           </div>
           <div className="inline-block w-fit cursor-default rounded-sm border px-2 shadow-[var(--shadow-aesthetic)] select-none">

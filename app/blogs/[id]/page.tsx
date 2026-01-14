@@ -1,8 +1,6 @@
-import React from "react";
 import { notFound } from "next/navigation";
 import { getAllBlogPosts, getBlogPost } from "@/lib/blogs";
 import { getBlogContent } from "@/lib/blog-content";
-import MaxWidthWrapper from "@/components/layout/max-width-wrapper";
 import { format } from "date-fns";
 import Link from "next/link";
 

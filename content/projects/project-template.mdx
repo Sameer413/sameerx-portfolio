@@ -1,0 +1,71 @@
+---
+title: "Infinite Scrolling for List Data"
+description: "A performant infinite scrolling implementation using React, IntersectionObserver, and paginated APIs."
+date: "2026-01-14"
+author: "Sameer"
+tags: ["react", "infinite-scroll", "pagination", "frontend"]
+tech_stack:
+  - label: "React"
+    image: "/images/react.svg"
+  - label: "TypeScript"
+    image: "/images/typescript.svg"
+  - label: "Node.js"
+    image: "/images/nodejs.svg"
+cover_image: "/projects/infinite-scroll/cover.png"
+published: true
+---
+
+## 🚀 Project Overview
+
+This project demonstrates a **production-ready infinite scrolling system**
+for rendering large lists efficiently. It uses **IntersectionObserver**
+to load data progressively as the user scrolls, minimizing API calls and
+improving performance.
+
+---
+
+## 🎯 Problem Statement
+
+Traditional pagination breaks user flow when browsing large datasets.
+The goal was to:
+
+- Load data **incrementally**
+- Avoid unnecessary re-renders
+- Prevent duplicate API calls
+- Keep the UI smooth on low-end devices
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** – UI rendering
+- **TypeScript** – Type safety
+- **IntersectionObserver API** – Scroll detection
+- **Zustand** – State management
+- **REST API** – Backend pagination
+
+---
+
+## 🧩 Architecture
+
+### Data Flow
+
+1. Initial page loads first set of items
+2. A sentinel element is observed at the bottom
+3. When visible, next page is fetched
+4. Data is appended (not replaced)
+5. Observer pauses when no more pages exist
+
+---
+
+## 💡 Key Implementation Details
+
+### Intersection Observer Setup
+
+```ts
+const observer = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && hasNextPage) {
+    loadNextPage();
+  }
+});
+```

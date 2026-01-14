@@ -59,6 +59,7 @@ const Projects: React.FC = () => {
             onClick={setActive}
             image_src="/images/macbook-scroll.webp"
             project={active}
+            idx={PROJECTS.findIndex((p) => p === active)}
           />
         )}
       </AnimatePresence>
