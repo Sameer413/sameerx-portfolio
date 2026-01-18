@@ -23,14 +23,14 @@ const ExperiencePositionItem = ({
 
   return (
     <div className="group relative last:before:absolute last:before:h-full last:before:w-4">
-    {/* <div className="group last:before:bg-neutral-900 relative last:before:absolute last:before:h-full last:before:w-4"> */}
+      {/* <div className="group last:before:bg-neutral-900 relative last:before:absolute last:before:h-full last:before:w-4"> */}
       {/* Trigger */}
       <div
         className={cn(
           "block w-full cursor-pointer list-none text-left",
           "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7",
-          "before:-z-1 before:rounded-lg before:transition-[background-color] before:ease-out",
-          "hover:before:bg-accent2",
+          "before:-z-1 before:transition-colors before:ease-out",
+          "hover:before:bg-muted/50",
         )}
         onClick={() => setOpen(!open)}
       >

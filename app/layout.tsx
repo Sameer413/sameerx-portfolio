@@ -5,6 +5,7 @@ import MaxWidthWrapper from "@/components/layout/max-width-wrapper";
 import Pattern from "@/components/layout/pattern";
 import Header from "@/components/layout/header";
 import ThemeProvider from "@/components/providers/theme-provider";
+import Footer from "@/components/layout/footer";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <MaxWidthWrapper>
             <Header />
             {children}
+            <Footer />
           </MaxWidthWrapper>
         </ThemeProvider>
       </body>

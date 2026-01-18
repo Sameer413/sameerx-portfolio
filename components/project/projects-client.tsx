@@ -30,7 +30,8 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ projects }) => {
 
       <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, idx) => (
-          <motion.button
+          <motion.a
+            href={`projects/${project.id}`}
             key={project.id ?? idx}
             initial={{ y: 10, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -42,7 +43,7 @@ const ProjectsClient: React.FC<ProjectsClientProps> = ({ projects }) => {
             viewport={{ once: true }}
           >
             <ProjectCard project={project} idx={idx} />
-          </motion.button>
+          </motion.a>
         ))}
       </div>
     </div>

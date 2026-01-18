@@ -30,7 +30,7 @@ export default function Home() {
       <Pattern className="h-10" />
 
       <Projects />
-      <Pattern className="h-10" />
+      {/* <Pattern className="h-10" /> */}
     </div>
   );
 }
