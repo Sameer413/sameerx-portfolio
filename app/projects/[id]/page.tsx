@@ -63,7 +63,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
   }
 
   return (
-    <article className="py-8 px-4">
+    <article className="px-4 py-8">
       <Link
         href="/projects"
         className="text-muted-foreground hover:text-foreground mb-6 inline-block text-sm transition-colors"
@@ -114,7 +114,7 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
             {project.tech_stack.map((tech, idx) => (
               <div
                 key={idx}
-                className="border-border bg-muted text-foreground mr-2 inline-flex items-center gap-1 rounded-md border-2 border-dashed px-2 py-1 text-xs font-medium"
+                className="border-border bg-muted text-foreground inline-flex items-center gap-1 rounded-md border-2 border-dashed px-2 py-1 text-xs font-medium"
               >
                 {tech.image && (
                   <Image
@@ -125,7 +125,9 @@ const ProjectDetailPage = async ({ params }: ProjectPageProps) => {
                     className="h-5 w-5 object-contain"
                   />
                 )}
-                <span className="text-sm font-medium font-geist-mono">{tech.label}</span>
+                <span className="font-geist-mono text-sm font-medium">
+                  {tech.label}
+                </span>
               </div>
             ))}
           </div>

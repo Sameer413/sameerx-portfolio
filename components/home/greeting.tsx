@@ -40,7 +40,7 @@ const Greeting: React.FC = () => {
       <div className="grid flex-1 grid-rows-[1fr_max-content_max-content]">
         <div className="relative">
           <Pattern className="h-full w-full" />
-          <div className="font-geist-mono text-muted-foreground absolute bottom-0 mb-1 ml-2 text-[10px] md:hidden md:text-xs">
+          <div className="font-geist-mono text-muted-foreground absolute bottom-0 mb-1 ml-2 text-[8px] md:hidden md:text-xs">
             text-3xl font-geist-mono font-medium
           </div>
           <div className="font-geist-mono text-muted-foreground pointer-events-none absolute bottom-0 mb-2 ml-3 hidden text-sm leading-tight font-medium select-none md:block">

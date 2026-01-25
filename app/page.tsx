@@ -3,6 +3,7 @@ import Experience from "@/components/home/experience";
 // import GithubContribution from "@/components/home/github-contribution";
 import Greeting from "@/components/home/greeting";
 import TechStack from "@/components/home/tech-stack";
+import Footer from "@/components/layout/footer";
 import Pattern from "@/components/layout/pattern";
 import Overview from "@/components/overview";
 import Projects from "@/components/project";
@@ -31,6 +32,7 @@ export default function Home() {
 
       <Projects />
       {/* <Pattern className="h-10" /> */}
+      <Footer />
     </div>
   );
 }

@@ -15,7 +15,7 @@ import { motion } from "motion/react";
 const OPTIONS = [
   { label: "Home", href: "/" },
   { label: "Blogs", href: "/blogs" },
-  { label: "Experiences", href: "/experiences" },
+  // { label: "Experiences", href: "/experiences" },
   { label: "Projects", href: "/projects" },
 ];
 
@@ -114,7 +114,7 @@ const Header: React.FC = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 select-none">
           <AnimatePresence mode="wait">
             {headerIcon ? (
               <div className="h-8 w-8">
@@ -135,7 +135,7 @@ const Header: React.FC = () => {
             ) : null}
           </AnimatePresence>
           <div className="font-geist-mono text-lg font-semibold transition-all ease-linear">
-            SameerX
+            Sameer.n()
           </div>
         </div>
 

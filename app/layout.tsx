@@ -41,7 +41,6 @@ export default function RootLayout({
           <MaxWidthWrapper>
             <Header />
             {children}
-            <Footer />
           </MaxWidthWrapper>
         </ThemeProvider>
       </body>

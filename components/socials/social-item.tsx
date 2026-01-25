@@ -9,6 +9,7 @@ type Props = {
   icon: LucideIcon | IconType;
   children?: ReactNode;
   iconSize?: number;
+  link?: string;
 };
 
 const containerVariants: Variants = {
@@ -37,6 +38,7 @@ const SocialItem: React.FC<Props> = ({
   children,
   label,
   iconSize,
+  link,
 }) => {
   //   const splitWords = (text: string) => text.split(" ");
 
@@ -50,7 +52,9 @@ const SocialItem: React.FC<Props> = ({
       <Icon size={16} />
 
       {/* Expanding label */}
-      <motion.div
+      <motion.a
+        href={link ? link : "#"}
+        target="_blank"
         variants={containerVariants}
         className="left-full ml-2 overflow-hidden whitespace-nowrap hover:underline"
       >
@@ -62,7 +66,7 @@ const SocialItem: React.FC<Props> = ({
               delay: wordIndex * 0.15,
               duration: 0.3,
             }}
-            className="inline-block hover:underline"
+            className="group inline-block"
           >
             {word.split("").map((letter, letterIndex) => (
               <motion.span
@@ -73,14 +77,14 @@ const SocialItem: React.FC<Props> = ({
                   delay: wordIndex * 0.15 + letterIndex * 0.04,
                   duration: 0.2,
                 }}
-                className="inline-block"
+                className="inline-block group-hover:underline"
               >
                 {letter}
               </motion.span>
             ))}
           </motion.span>
         ))}
-      </motion.div>
+      </motion.a>
     </motion.div>
   );
 };
