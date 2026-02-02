@@ -43,7 +43,9 @@ const SocialItem: React.FC<Props> = ({
   //   const splitWords = (text: string) => text.split(" ");
 
   return (
-    <motion.div
+    <motion.a
+      href={link ? link : "#"}
+      target="_blank"
       className="relative flex cursor-pointer items-center"
       initial="hidden"
       whileHover="show"
@@ -52,9 +54,7 @@ const SocialItem: React.FC<Props> = ({
       <Icon size={16} />
 
       {/* Expanding label */}
-      <motion.a
-        href={link ? link : "#"}
-        target="_blank"
+      <motion.div
         variants={containerVariants}
         className="left-full ml-2 overflow-hidden whitespace-nowrap hover:underline"
       >
@@ -84,8 +84,8 @@ const SocialItem: React.FC<Props> = ({
             ))}
           </motion.span>
         ))}
-      </motion.a>
-    </motion.div>
+      </motion.div>
+    </motion.a>
   );
 };
 

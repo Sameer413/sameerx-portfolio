@@ -13,7 +13,7 @@ type ProjectsClientProps = {
 
 const ProjectsClient: React.FC<ProjectsClientProps> = ({ projects }) => {
   return (
-    <div className="grid w-full h-screen grid-rows-[1fr_max-content]">
+    <div className="grid w-full h-[calc(100%-64px)] grid-rows-[1fr_max-content]">
       <div className="p-4">
         <motion.div
           initial={{ width: 0, opacity: 0 }}

@@ -114,7 +114,7 @@ const Header: React.FC = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="flex items-center gap-2 select-none">
+        <Link href={"/"} className="flex items-center gap-2 select-none">
           <AnimatePresence mode="wait">
             {headerIcon ? (
               <div className="h-8 w-8">
@@ -135,9 +135,9 @@ const Header: React.FC = () => {
             ) : null}
           </AnimatePresence>
           <div className="font-geist-mono text-lg font-semibold transition-all ease-linear">
-            Sameer.n()
+            Sameer.n();
           </div>
-        </div>
+        </Link>
 
         <div className="flex items-center justify-center gap-3">
           <div className="hidden items-center md:flex">
@@ -186,7 +186,7 @@ const Header: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -100, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 right-0 z-[70] rounded-b-3xl bg-background shadow-lg md:hidden"
+              className="bg-background fixed top-0 right-0 left-0 z-[70] rounded-b-3xl shadow-lg md:hidden"
             >
               <div className="flex flex-col px-6 py-8">
                 <div className="mb-6 flex items-center justify-between">
@@ -195,7 +195,7 @@ const Header: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="rounded-full p-2 text-secondary-foreground/80 hover:bg-accent"
+                    className="text-secondary-foreground/80 hover:bg-accent rounded-full p-2"
                     aria-label="Close menu"
                   >
                     <svg
@@ -222,7 +222,7 @@ const Header: React.FC = () => {
                       className={cn(
                         "rounded-lg px-4 py-3 text-base font-medium transition-colors",
                         pathname === href
-                          ? "bg-neutral-200 dark:bg-neutral-800 text-secondary-foreground font-semibold"
+                          ? "text-secondary-foreground bg-neutral-200 font-semibold dark:bg-neutral-800"
                           : "text-secondary-foreground/80 hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
                       )}
                     >
