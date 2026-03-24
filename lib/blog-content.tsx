@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 const blogContentMap: Record<string, () => Promise<{ default: React.ComponentType }>> = {
   "welcome-to-my-blog": () => import("@/content/blogs/welcome-to-my-blog.mdx"),
   "getting-started-with-nextjs": () => import("@/content/blogs/getting-started-with-nextjs.mdx"),
+  "qr-implementation": () => import("@/content/blogs/qr-implementation.mdx"),
 };
 
 export function getBlogContent(id: string) {

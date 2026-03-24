@@ -2,6 +2,227 @@
 title: "Implementing QR Codes at Scale: Design, Performance, and Edge Cases"
 description: "A deep dive into designing and implementing a scalable QR code system, covering architecture decisions, performance optimizations, and real-world edge cases."
 date: "2024-01-20"
-author: "SameerX"
+author: "Sameer Nimje"
 tags: ["qr-code", "system-design", "nextjs", "react", "backend", "performance"]
 ---
+
+# 📱 QR Scanner System Design (TypeScript + Optimization)
+
+Modern apps like payments, login systems, and ticketing rely heavily on QR scanning.  
+But building a **fast, scalable, and optimized QR system** requires careful design.
+
+This blog covers a **real-world system design using TypeScript (Frontend + Backend)** with performance optimizations.
+
+---
+
+# 🧠 Problem Statement
+
+We want to build a QR system that:
+
+- Supports **config-based scanning**
+- Prevents **re-scanning failed QR codes**
+- Supports:
+  - ✅ In-app navigation (internal)
+  - 🌐 External links (third-party)
+- Controls behavior using **redirect flags**
+
+---
+
+# 🏗️ Architecture
+
+```text
+Camera → Decode → Cache Check → Backend → Decision Engine → Action
+```
+
+---
+
+## ⚙️ Core Requirements
+
+| Feature | Description |
+|---|---|
+| Config-based scan | Behavior controlled via config |
+| Failed QR cache | Avoid repeated failures |
+| Internal scan | Navigate inside app |
+| External scan | Open browser |
+| Redirect flag | Control navigation |
+
+---
+
+# 🧩 Frontend (TypeScript / React)
+
+## 📌 Scanner Hook
+
+```typescript
+import { useState } from "react";
+
+const failedCache = new Set<string>();
+
+export function useQRScanner() {
+  const [lastScanned, setLastScanned] = useState<string | null>(null);
+
+  const handleScan = async (data: string) => {
+    if (!data) return;
+
+    // 🚫 Prevent re-scan of failed QR
+    if (failedCache.has(data)) return;
+
+    setLastScanned(data);
+
+    try {
+      const res = await fetch(`/api/scan?qr=${encodeURIComponent(data)}`);
+      const result = await res.json();
+
+      if (!result.success) {
+        failedCache.add(data);
+        return;
+      }
+
+      handleRedirect(result);
+
+    } catch {
+      failedCache.add(data);
+    }
+  };
+
+  return { handleScan };
+}
+```
+
+## 📌 Redirect Logic
+
+```typescript
+function handleRedirect(result: any) {
+  const { type, url, redirect } = result;
+
+  if (type === "INTERNAL" && redirect !== false) {
+    window.location.href = url;
+  } else if (type === "EXTERNAL") {
+    window.open(url, "_blank");
+  }
+}
+```
+
+---
+
+# 🧠 Backend (Node.js / TypeScript)
+
+## 📌 Config
+
+```typescript
+export const QR_CONFIG = {
+  internalDomains: ["myapp.com"],
+  retryBlock: true,
+};
+```
+
+## 📌 Scan API
+
+```typescript
+import { Request, Response } from "express";
+
+export const scanQR = async (req: Request, res: Response) => {
+  const qr = req.query.qr as string;
+
+  if (!qr) {
+    return res.json({ success: false });
+  }
+
+  try {
+    const isExternal = qr.startsWith("http");
+
+    if (isExternal) {
+      return res.json({
+        success: true,
+        type: "EXTERNAL",
+        url: qr,
+      });
+    }
+
+    return res.json({
+      success: true,
+      type: "INTERNAL",
+      url: `/app/${qr}`,
+      redirect: true,
+    });
+
+  } catch {
+    return res.json({ success: false });
+  }
+};
+```
+
+---
+
+# ⚡ Optimizations
+
+## 🚫 1. Failed QR Cache
+
+```typescript
+const failedCache = new Set<string>();
+```
+
+- Prevents repeated API calls
+- Improves performance
+
+## ⏱️ 2. Debounce Scanning
+
+```typescript
+let lastScanTime = 0;
+
+if (Date.now() - lastScanTime < 2000) return;
+lastScanTime = Date.now();
+```
+
+## 🧠 3. Local Validation
+
+```typescript
+if (!qr.startsWith("http") && qr.length < 3) {
+  return;
+}
+```
+
+## 📦 4. Backend Caching
+
+Use Redis:
+
+```typescript
+if (cache.has(qr)) return cache.get(qr);
+```
+
+---
+
+# 🔐 Security
+
+- Validate URLs (prevent phishing)
+- Allow only trusted domains
+- Sanitize input
+- Rate limit API
+
+---
+
+# 📁 Folder Structure
+
+```
+qr-system/
+│
+├── frontend/
+│   ├── hooks/useQRScanner.ts
+│   ├── utils/redirect.ts
+│
+├── backend/
+│   ├── controllers/scan.controller.ts
+│   ├── config/config.ts
+│   ├── services/qr.service.ts
+│
+└── shared/
+    ├── types.ts
+```
+
+---
+
+# 🚀 Bonus
+
+If you want, I can:
+- Convert this into a **beautiful blog UI (Next.js + Tailwind)**
+- Add **diagrams using Mermaid (very impressive)**
+- Turn this into a **GitHub project (resume-ready)**

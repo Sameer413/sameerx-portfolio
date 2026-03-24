@@ -6,6 +6,7 @@ import Pattern from "@/components/layout/pattern";
 import Header from "@/components/layout/header";
 import ThemeProvider from "@/components/providers/theme-provider";
 import Footer from "@/components/layout/footer";
+import OnekoCat from "@/components/common/one-ko-cat";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -30,17 +31,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistMono.variable} ${inter.variable} antialiased box-border dark:bg-neutral-900`}
+        className={`${geistMono.variable} ${inter.variable} box-border antialiased dark:bg-neutral-900`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <MaxWidthWrapper>
             <Header />
             {children}
+            {/* <OnekoCat /> */}
           </MaxWidthWrapper>
         </ThemeProvider>
       </body>

@@ -1,8 +1,7 @@
-import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: { remotePatterns: [{ hostname: "pbs.twimg.com" }] },
   pageExtensions: ["ts", "tsx", "md", "mdx"],
 };
@@ -10,7 +9,12 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter"],
+    // All plugins must be strings for Turbopack serialization compatibility
+    remarkPlugins: [
+      "remark-gfm",
+      "remark-frontmatter",
+      "remark-mdx-frontmatter",
+    ],
     rehypePlugins: [],
   },
 });

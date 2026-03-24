@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
+import { CodeBlock } from "@/components/code-block";
 
 export type MDXComponents = {
   [key: string]: React.ComponentType<any>;
@@ -10,7 +11,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ className, ...props }: ComponentPropsWithoutRef<"h1">) => (
       <h1
         className={cn(
-          "mt-8 scroll-m-20 text-4xl font-bold tracking-tight text-foreground",
+          "mt-8 scroll-m-20 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl",
           className
         )}
         {...props}
@@ -19,7 +20,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ className, ...props }: ComponentPropsWithoutRef<"h2">) => (
       <h2
         className={cn(
-          "mt-8 scroll-m-20 text-3xl font-semibold tracking-tight text-foreground border-b border-border pb-2",
+          "mt-8 scroll-m-20 text-xl font-semibold tracking-tight text-foreground border-b border-border pb-2 sm:text-2xl lg:text-3xl",
           className
         )}
         {...props}
@@ -28,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: ({ className, ...props }: ComponentPropsWithoutRef<"h3">) => (
       <h3
         className={cn(
-          "mt-6 scroll-m-20 text-2xl font-semibold tracking-tight text-foreground",
+          "mt-6 scroll-m-20 text-lg font-semibold tracking-tight text-foreground sm:text-xl lg:text-2xl",
           className
         )}
         {...props}
@@ -37,7 +38,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ className, ...props }: ComponentPropsWithoutRef<"h4">) => (
       <h4
         className={cn(
-          "mt-6 scroll-m-20 text-xl font-semibold tracking-tight text-foreground",
+          "mt-6 scroll-m-20 text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl",
           className
         )}
         {...props}
@@ -73,7 +74,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ className, ...props }: ComponentPropsWithoutRef<"p">) => (
       <p
         className={cn(
-          "leading-7 text-foreground [&:not(:first-child)]:mt-6",
+          "leading-7 text-sm text-foreground [&:not(:first-child)]:mt-6 sm:text-base lg:text-[1.0625rem]",
           className
         )}
         {...props}
@@ -82,7 +83,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: ({ className, ...props }: ComponentPropsWithoutRef<"ul">) => (
       <ul
         className={cn(
-          "my-6 ml-6 list-disc [&>li]:mt-2 text-foreground",
+          "my-6 ml-6 list-disc [&>li]:mt-2 text-sm text-foreground sm:text-base",
           className
         )}
         {...props}
@@ -91,7 +92,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ol: ({ className, ...props }: ComponentPropsWithoutRef<"ol">) => (
       <ol
         className={cn(
-          "my-6 ml-6 list-decimal [&>li]:mt-2 text-foreground",
+          "my-6 ml-6 list-decimal [&>li]:mt-2 text-sm text-foreground sm:text-base",
           className
         )}
         {...props}
@@ -157,24 +158,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    pre: ({ className, ...props }: ComponentPropsWithoutRef<"pre">) => (
-      <pre
-        className={cn(
-          "mb-4 mt-6 overflow-x-auto rounded-lg border border-border bg-muted p-4",
-          className
-        )}
-        {...props}
-      />
+    pre: (props: ComponentPropsWithoutRef<"pre">) => (
+      <CodeBlock {...props} />
     ),
-    code: ({ className, ...props }: ComponentPropsWithoutRef<"code">) => (
-      <code
-        className={cn(
-          "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground",
-          className
-        )}
-        {...props}
-      />
-    ),
+    code: ({ className, ...props }: ComponentPropsWithoutRef<"code">) => {
+      // If inside a pre block, CodeBlock handles rendering — skip extra styling
+      const isBlock = className?.includes("language-");
+      if (isBlock) return <code className={className} {...props} />;
+      return (
+        <code
+          className={cn(
+            "relative rounded-md border border-border bg-muted/80 px-[0.35rem] py-[0.15rem] font-mono text-xs font-medium text-foreground sm:text-sm",
+            className
+          )}
+          {...props}
+        />
+      );
+    },
     ...components,
   };
 }
