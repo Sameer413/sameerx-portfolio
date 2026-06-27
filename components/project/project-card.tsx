@@ -12,7 +12,7 @@ const ProjectCard: React.FC<{ project: Project; idx: number }> = ({
 }) => {
   const { tech_stack, title, description } = project;
   return (
-    <div className="group hover:border-border cursor-pointer rounded-md border border-transparent transition-colors delay-75 duration-300 select-none group-hover:border-t-0">
+    <div className="group hover:border-border cursor-pointer rounded-md border border-transparent transition-colors delay-75 duration-300 select-none group-hover:border-t-0 h-full">
       <div className="relative rounded-md">
         <Image
           alt="anyImage"
@@ -28,13 +28,10 @@ const ProjectCard: React.FC<{ project: Project; idx: number }> = ({
           layoutId={`text-${idx}-${title}`}
           className="font-geist-mono text-base font-medium"
         >
-          Supply Chain
+          {title}
         </motion.div>
         <div className="font-geist-mono text-muted-foreground mt-2 overflow-hidden text-start text-xs text-pretty">
-          {description ||
-            `Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-          repudiandae facere reprehenderit! Doloremque quas perferendis delectus
-          voluptas accusantium sit nesciunt.`}
+          {description}
         </div>
 
         {/* SKILLS */}

@@ -3,6 +3,7 @@ export const ROLES = [
   "Frontend Engineer",
   "Backend Engineer",
   "Full-Stack Engineer",
+  "QA Engineer",
   // "DevOps Engineer",
 ];
 
